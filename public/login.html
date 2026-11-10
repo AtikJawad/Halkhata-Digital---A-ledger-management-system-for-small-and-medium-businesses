@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="bn">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>হালখাতা ডিজিটাল — লগইন</title>
+  <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600;700&family=Tiro+Bangla&display=swap" rel="stylesheet" />
+  <style>
+   :root{
+--green-dark:#1a472a;
+--green-mid:#2d6a4f;
+--green-light:#40916c;
+
+--amber:#e9c46a;
+
+--cream:#fdf6e3;
+--cream-dark:#f8f1df;
+
+--border:#d8cab1;
+
+--ink:#132218;
+--ink-light:#687266;
+
+--red:#d63b46;
+}
+
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+}
+
+body{
+font-family:'Hind Siliguri',sans-serif;
+min-height:100vh;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+padding:30px;
+
+overflow:hidden;
+
+background:
+radial-gradient(circle at top right,#52a57655 0%,transparent 30%),
+radial-gradient(circle at bottom left,#ffffff22 0%,transparent 35%),
+linear-gradient(135deg,#17492a,#2d6a4f,#40916c);
+}
+
+body::before{
+content:"";
+position:fixed;
+width:500px;
+height:500px;
+border-radius:50%;
+background:#ffffff08;
+top:-120px;
+left:-120px;
+filter:blur(50px);
+}
+
+body::after{
+content:"";
+position:fixed;
+width:420px;
+height:420px;
+border-radius:50%;
+background:#ffffff10;
+right:-120px;
+bottom:-120px;
+filter:blur(60px);
+}
+
+.card{
+
+width:100%;
+max-width:430px;
+
+padding:42px;
+
+background:rgba(253,246,227,.95);
+
+backdrop-filter:blur(18px);
+
+border-radius:28px;
+
+box-shadow:
+0 20px 70px rgba(0,0,0,.28);
+
+border:1px solid rgba(255,255,255,.35);
+
+animation:fadeUp .55s ease;
+
+position:relative;
+
+z-index:5;
+
+}
+
+@keyframes fadeUp{
+
+from{
+
+opacity:0;
+transform:translateY(25px);
+
+}
+
+to{
+
+opacity:1;
+transform:none;
+
+}
+
+}
+
+.logo-icon{
+
+width:86px;
+height:86px;
+
+margin:auto auto 18px;
+
+display:flex;
+justify-content:center;
+align-items:center;
+
+border-radius:50%;
+
+background:linear-gradient(145deg,#1a472a,#2f6d4f);
+
+box-shadow:
+0 10px 30px rgba(26,71,42,.4);
+
+}
+
+h1{
+
+font-family:'Tiro Bangla',serif;
+
+font-size:2rem;
+
+color:var(--green-dark);
+
+text-align:center;
+
+margin-bottom:6px;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+color:var(--ink-light);
+
+margin-bottom:34px;
+
+font-size:.95rem;
+
+}
+
+.form-group{
+
+margin-bottom:20px;
+
+}
+
+label{
+
+display:block;
+
+margin-bottom:7px;
+
+font-weight:700;
+
+font-size:.88rem;
+
+color:var(--ink);
+
+}
+
+input{
+
+width:100%;
+
+padding:14px 16px;
+
+border-radius:12px;
+
+border:1.6px solid var(--border);
+
+background:white;
+
+font-size:1rem;
+
+transition:.25s;
+
+font-family:'Hind Siliguri',sans-serif;
+
+}
+
+input:focus{
+
+outline:none;
+
+border-color:#40916c;
+
+box-shadow:0 0 0 5px rgba(64,145,108,.12);
+
+transform:translateY(-1px);
+
+}
+
+input[type=password]{
+
+letter-spacing:.4rem;
+
+font-size:1.1rem;
+
+}
+
+.btn{
+
+width:100%;
+
+padding:15px;
+
+margin-top:10px;
+
+border:none;
+
+border-radius:12px;
+
+cursor:pointer;
+
+font-size:1rem;
+
+font-weight:700;
+
+background:linear-gradient(135deg,#1a472a,#2d6a4f);
+
+color:white;
+
+transition:.25s;
+
+box-shadow:0 10px 25px rgba(26,71,42,.3);
+
+}
+
+.btn:hover{
+
+transform:translateY(-2px);
+
+box-shadow:0 18px 35px rgba(26,71,42,.35);
+
+}
+
+.btn:active{
+
+transform:scale(.98);
+
+}
+
+.btn:disabled{
+
+opacity:.7;
+
+}
+
+.error{
+
+display:none;
+
+margin:12px 0;
+
+padding:10px;
+
+border-radius:10px;
+
+background:#ffe8ea;
+
+color:#b11f2b;
+
+font-size:.85rem;
+
+text-align:center;
+
+}
+
+.error.show{
+
+display:block;
+
+}
+
+.hint{
+
+margin-top:16px;
+
+font-size:.75rem;
+
+text-align:center;
+
+color:#7c847d;
+
+}
+
+.signup{
+
+margin-top:26px;
+
+padding-top:22px;
+
+border-top:1px solid var(--border);
+
+text-align:center;
+
+font-size:.88rem;
+
+color:var(--ink-light);
+
+}
+
+.signup a{
+
+text-decoration:none;
+
+font-weight:700;
+
+color:var(--green-mid);
+
+}
+
+.signup a:hover{
+
+text-decoration:underline;
+
+}
+
+.version{
+
+margin-top:20px;
+
+text-align:center;
+
+font-size:.72rem;
+
+color:#8b8b8b;
+
+}
+  </style>
+</head>
+<body>
+<div class="card">
+  <div class="logo-icon">
+    <img src="/icon-192.png" alt="হালখাতা ডিজিটাল">
+  </div>
+  <p class="subtitle">আপনার ব্যবসার সকল হিসাব এক জায়গায়</p>
+
+    <div class="form-group">
+     <label>ফোন নম্বর</label>
+     <input type="tel" id="phone" placeholder="01700000000" maxlength="11" />
+        </div>
+        <div class="form-group">
+          <label>৪ সংখ্যার PIN</label>
+          <div style="position:relative">
+
+      <input
+      type="password"
+      id="pin"
+      placeholder="••••"
+      maxlength="4"
+      inputmode="numeric">
+
+      <button
+      type="button"
+      id="togglePin"
+      style="
+      position:absolute;
+      right:12px;
+      top:50%;
+      transform:translateY(-50%);
+      background:none;
+      border:none;
+      cursor:pointer;
+      font-size:.85rem;
+      color:#2d6a4f;
+      font-weight:bold;">
+      দেখুন
+      </button>
+
+      </div>
+  </div>
+  <p class="error" id="error-msg">ভুল নম্বর বা PIN</p>
+  <button class="btn" id="login-btn" onclick="doLogin()">লগইন করুন</button>
+  <p class="hint">নিরাপদভাবে আপনার দোকানের তথ্য সংরক্ষণ করুন</p>
+
+<div class="signup">
+    নতুন দোকান?
+
+    <a href="/signup">
+
+        অ্যাকাউন্ট তৈরি করুন →
+
+    </a>
+</div>
+
+<div class="version">
+
+    Halkhata Digital • Version 1.0
+
+</div>
+
+</div>
+
+<script>
+  // If already logged in, go straight to app
+  fetch('/api/auth/check')
+    .then(r => r.json())
+    .then(d => { if (d.loggedIn) window.location.href = '/'; });
+
+  document.addEventListener('keydown', e => {
+    if (e.key === 'Enter') doLogin();
+  });
+
+  document
+  .getElementById("togglePin")
+  .addEventListener("click",()=>{
+
+  const p=document.getElementById("pin");
+
+  if(p.type==="password"){
+
+  p.type="text";
+
+  togglePin.textContent="লুকান";
+
+  }else{
+
+  p.type="password";
+
+  togglePin.textContent="দেখুন";
+
+  }
+
+  });
+
+  async function doLogin() {
+    const phone = document.getElementById('phone').value.trim();
+    const pin   = document.getElementById('pin').value.trim();
+    const errEl = document.getElementById('error-msg');
+    const btn   = document.getElementById('login-btn');
+
+    errEl.classList.remove('show');
+    if (!phone || !pin) { errEl.textContent = 'ফোন ও PIN দিন'; errEl.classList.add('show'); return; }
+
+    btn.disabled = true;
+    btn.textContent = '⏳ যাচাই করা হচ্ছে...';
+
+    try {
+      const res = await fetch('/api/auth/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ phone, pin })
+      });
+      const data = await res.json();
+      if (!res.ok) throw new Error(data.error || 'লগইন ব্যর্থ');
+      sessionStorage.setItem('halkhata_auth', JSON.stringify(data));
+      window.location.href = '/';
+    } catch (e) {
+      errEl.textContent = e.message;
+      errEl.classList.add('show');
+      btn.disabled = false;
+      btn.textContent = 'লগইন করুন';
+      document.getElementById('pin').value = '';
+      document.getElementById('pin').focus();
+    }
+  }
+</script>
+</body>
+</html>
